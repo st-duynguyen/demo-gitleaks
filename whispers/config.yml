@@ -1,0 +1,20 @@
+include:
+  files:
+    - "**/*"
+
+exclude:
+  files:
+    - "**/test/**/*"
+    - "**/tests/**/*"
+  keys:
+    - ^foo
+  values:
+    - bar$
+
+rules:
+  starks:
+    message: Whispers from the North
+    severity: CRITICAL
+    value:
+      regex: (Aria|Ned) Stark
+      ignorecase: True
