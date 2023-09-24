@@ -1,13 +1,21 @@
-name: whispers
+name: Secrets Scanning
+
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+
 jobs:
+
   scan:
-    name: whispers
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+
+      # Installs secret scanner on the runner
+      - name: Install Whispers
+        run: sudo pip install whispers
+
+      # Scan repo for secrets
+      - name: Run scanner for the repository
+        run: whispers ${{ github.workspace }}
