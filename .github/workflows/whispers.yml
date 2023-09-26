@@ -19,4 +19,4 @@ jobs:
 
       # Scan repo for secrets
       - name: Run scanner for the repository
-        run: whispers -c whispers/config.yml
+        run: whispers -c whispers/config.yml src
