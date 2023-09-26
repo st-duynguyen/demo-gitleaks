@@ -3,8 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const TWITTER_SECRET_KEY='aaaaa12321321321asdasdasd231231232sdasaaa';
-  const aws='qwewqewewqeqweqweqweqwewqeqweqw';
+  const TWITTER_SECRET_KEY='aaaaaw5c.rCC12321321321asdasdasd231231232sdasaaa';
+  const aws = 'aaaw5c.rCCaaaaaaaaaaaaaaaaaaaaaaasdsadasdasdsadas'
   return (
     <div className="App">
       <header className="App-header">

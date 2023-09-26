@@ -2,10 +2,26 @@ include:
   files:
     - "**/*"
 
-exclude:
-  files:
-    - "**/test/**/*"
-    - "**/tests/**/*"
+exclude: 
+   files: 
+     - ".git/**/*" 
+     - ".vscode/**/*" 
+     - "build/**/*" 
+     - "dev/**/*" 
+     - "**/__pycache__/**/*" 
+     - "**/.eggs/**/*" 
+     - "**/locales/**/*" 
+     - "**/spec/**/*" 
+     - "**/specs/**/*" 
+     - "**/test/**/*" 
+     - "**/tests/**/*" 
+     - "**/mock/**/*" 
+     - "**/mocks/**/*" 
+     - "**/integration/**/*" 
+     - "**/package-lock.json" 
+     - "**/package.json" 
+     - "**/npm-shrinkwrap.json" 
+     - "**/node_modules/**/*" 
   keys:
     - ^foo
   values:
@@ -13,8 +29,20 @@ exclude:
 
 rules:
   starks:
-    message: Whispers from the North
-    severity: CRITICAL
-    value:
-      regex: (Aria|Ned) Stark
-      ignorecase: True
+    description: Values formatted like AWS Session Token
+    message: AWS Session Token  # report will show this message
+    severity: CRITICAL           # one of BLOCKER, CRITICAL, MAJOR, MINOR, INFO
+
+    key:        # specify key format
+      regex: (aws.?session.?token)?
+      ignorecase: True   # case-insensitive matching
+
+    value:      # specify value format
+      regex: (?i)w5c\.rCC(.{0,10})?[0-9a-z]{10,30}
+      ignorecase: False  # case-sensitive matching
+      minlen: 270        # value is at least this long
+      isBase64: True     # value is base64-encoded
+      isAscii: False     # value is binary data when decoded
+      isUri: False       # value is not formatted like a URI
+
+    similar: 0.35

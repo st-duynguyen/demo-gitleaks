@@ -18,4 +18,4 @@ jobs:
 
       # Scan repo for secrets
       - name: Run scanner for the repository
-        run: whispers ${{ github.workspace }}
+        run: whispers -c whispers/config.yml
